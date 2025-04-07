@@ -5,6 +5,7 @@ from input_handlers import TextInput, ImageInput
 import json
 from datetime import datetime
 import os
+from recipe_gui import RecipeGUI
 
 class PocketChef:
     def __init__(self):
@@ -60,28 +61,11 @@ class PocketChef:
 def main():
     chef = PocketChef()
     
-    # Text input example
-    text_input = TextInput("tomatoes, onions, garlic, pasta")
-    recipe = chef.create_recipe(
-        text_input,
-        CookingStyle.ITALIAN,
-        30,
-        SkillLevel.BEGINNER
-    )
-    print(recipe)
+    # Start the GUI
+    gui = RecipeGUI(chef)
+    gui.create_window()
+    # print(recipe)
     
-    # Save recipe to a file
-    # with open(f"{recipe.name.lower().replace(' ', '_')}_recipe.txt", 'w') as f:
-    #     f.write(f"Recipe: {recipe.name}\n\n")
-    #     f.write("Ingredients:\n")
-    #     for ingredient in recipe.ingredients:
-    #         f.write(f"- {ingredient}\n")
-    #     f.write("\nInstructions:\n")
-    #     for i, instruction in enumerate(recipe.instructions, 1):
-    #         f.write(f"{i}. {instruction}\n")
-    #     f.write(f"\nCooking Time: {recipe.cooking_time} minutes")
-    #     f.write(f"\nSkill Level: {recipe.skill_level.value}")
-    #     f.write(f"\nStyle: {recipe.style.value}")
     # Image input example
     # image_input = ImageInput("ingredients.jpg")
     # recipe = chef.create_recipe(
